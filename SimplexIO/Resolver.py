@@ -121,9 +121,9 @@ class Resolver:
             self.boton.config(state='disabled')
         else:
             for i in range(len(self.matriz[0])):
-                label[pivote.pivotefc[1]][i].config(bg="#CB3234")
+                label[pivote.pivotefc[1]][i].config(bg="#FF6961")
             for i in range(len(self.matriz)):
-                label[i][pivote.pivotefc[0]].config(bg="#CB3234")
+                label[i][pivote.pivotefc[0]].config(bg="#FF6961")
             label[pivote.pivotefc[1]][pivote.pivotefc[0]].config(bg="#FF0000")
 
         if self.bandera:
