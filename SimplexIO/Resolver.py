@@ -21,7 +21,7 @@ class Resolver:
         self.boton = None
         self.inicio = None
         self.pivote = None
-
+    #muestra las condiciones de nuestro ejercicio de programación lineal
     def mostrar(self):
         print("funcion: ",self.funcion,"\n\n")
 
@@ -42,7 +42,7 @@ class Resolver:
         for i in range(len(self.result)):
             print("Resultado %d" % i+str(self.result[i])+"\t",end="")
         print("\n")
-
+    #declara los elementos que tendra la ventana
     def ventana(self):
         self.window.title("Metodo simplex")
         w, h = self.window.winfo_screenwidth(), self.window.winfo_screenheight()
@@ -73,10 +73,11 @@ class Resolver:
         c.config(scrollregion=c.bbox("all"))
         self.window.mainloop()
 
+    #declara los valores iniciales del metodo
     def empezar(self):
         matriz1 = Tabla(self.funcion, self.variables, self.restricciones, self.desig, self.result)
         self.matriz = matriz1.matrizlol()
-
+    #crea una matriz de tamaños suministrados en el apartado de la ventana principal
     def crearMatriz(self):
         label = []
         for i in range(4 + len(self.result)):
@@ -93,14 +94,15 @@ class Resolver:
         pivote.pivoteE()
         pivote.pivoteS()
         self.pivote = pivote.pivotefc
+        #declara si el boton de continuar estará habilitado o no
         if (pivote.nacotada):
             self.boton.config(state='disabled')
 
-
+        #declara si el problema es degenerado
         if pivote.degenerado:
             self.bandera = True
 
-
+        #encuentra el pivote solución del problema en la iteración actual
         if pivote.solucion:
             self.bandera = False
             self.boton.config(state = 'disabled')
@@ -137,6 +139,7 @@ class Resolver:
                     messagebox.showwarning("Advertencia", "Es un problema con ciclajes")
                     Label(self.inicio, text="Solucion = " + str(self.matriz[len(self.matriz) - 2][2]),font=("Comic Sans MS", 19), bg="#51D1F6").grid(columnspan=3, row=0, column=1)
             self.degenerado = degenerado
+
 
     def obtenerPivote(self):
         matriz = Matriz(self.matriz,self.pivote)

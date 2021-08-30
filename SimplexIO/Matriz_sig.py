@@ -7,6 +7,7 @@ class Matriz:
         self.pivotef = pivote[1]
         self.pivote = matriz[pivote[1]][pivote[0]]
 
+    #funcion declara fila que sale
     def filasale(self):
         for i in range(2):
             self.matriz[self.pivotef][i] = self.matriz[i][self.pivotec]
@@ -15,14 +16,14 @@ class Matriz:
             for i in range(2,len(self.matriz[0])):
                 print(self.matriz[self.pivotef][i],self.pivote)
                 self.matriz[self.pivotef][i] = Fraction(self.matriz[self.pivotef][i],self.pivote)
-
+    #aclara las filas restantes de la fila pivote
     def demasfilas(self):
         for i in range(2,len(self.matriz)-2):
             aux = self.matriz[i][self.pivotec]
             if(i!=self.pivotef):
                 for j in range(2,len(self.matriz[0])):
                     self.matriz[i][j] = self.matriz[i][j] - (aux*self.matriz[self.pivotef][j])
-
+    #retorna la matriz solucion
     def solucion(self):
         fila = len(self.matriz)-2
         suma = 0
@@ -32,12 +33,12 @@ class Matriz:
 
             self.matriz[fila][i] = suma
             suma = 0
-
+    # declara la fila cj de la matriz
     def cj(self):
         fila = len(self.matriz) - 1
         for i in range(3,len(self.matriz[0])):
             self.matriz[fila][i] = self.matriz[0][i]-self.matriz[fila-1][i]
-
+    #convina las funciones anteriores para unificarlas en la solución
     def convinar(self):
         self.filasale()
         self.demasfilas()

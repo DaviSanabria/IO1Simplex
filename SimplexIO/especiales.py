@@ -1,7 +1,7 @@
 import sympy
 from tkinter import messagebox
 from fractions import Fraction
-
+#soluciona los casos especiales de la matriz
 class CEspeciales:
     def __init__(self,Matriz,funcion):
         self.Matriz = Matriz
